@@ -1,5 +1,15 @@
-import CustomHeader from '@/components/CustomHeader';
+import CardList from '@/components/CardList';
+import { data } from './data/data';
+import Layout from '@/components/Layout';
 
 export default async function Index() {
-  return <CustomHeader title="Your Store" />;
+  return (
+    <>
+      <Layout>
+        <div className="Card-container w-full">
+          <CardList list={data} />
+        </div>
+      </Layout>
+    </>
+  );
 }

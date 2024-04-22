@@ -1,4 +1,5 @@
 import { createClient } from '@/utils/supabase/client';
+import { NextResponse } from 'next/server';
 
 export const GET = async () => {
   const supabase = createClient();
@@ -7,5 +8,8 @@ export const GET = async () => {
     .from('product_recommendations')
     .select('*');
 
-  return product_recommendations;
+  return NextResponse.json({
+    status: 200,
+    body: { data: product_recommendations },
+  });
 };

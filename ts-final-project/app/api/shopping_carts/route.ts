@@ -1,4 +1,5 @@
 import { createClient } from '@/utils/supabase/client';
+import { NextResponse } from 'next/server';
 
 export const GET = async () => {
   const supabase = createClient();
@@ -7,5 +8,5 @@ export const GET = async () => {
     .from('shopping_carts')
     .select('*');
 
-  return shopping_carts;
+  return NextResponse.json({ status: 200, body: { data: shopping_carts } });
 };
