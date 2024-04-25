@@ -1,7 +1,11 @@
+'use client';
+import useHandlerUrlParams from '@/customHooks/searchInput';
 import { FaArrowDown } from 'react-icons/fa6';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 
-export default function Input() {
+export default async function Input() {
+  const { handlerStateParams } = useHandlerUrlParams();
+
   return (
     <form className="max-w-lg mx-auto">
       <div className="flex">

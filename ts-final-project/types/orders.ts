@@ -1,4 +1,6 @@
 export interface IOrders {
+  id?: number;
+  created_at?: Date;
   user_id: number;
   cart_id: number;
   total: number;

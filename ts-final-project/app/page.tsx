@@ -7,7 +7,7 @@ export default async function Index() {
     <>
       <Layout>
         <div className="Card-container w-full">
-          <CardList list={data} />
+          <CardList listCard={data} />
         </div>
       </Layout>
     </>

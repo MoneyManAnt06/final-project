@@ -1,12 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { categoryType } from '../CardList';
+import Button from '../Button';
+
+import { FaCartShopping } from 'react-icons/fa6';
 
 export interface ICardProps {
   title: string;
   description?: string;
   image: IIamge;
   id: number;
-  href: string;
+  href?: string;
+  category?: categoryType;
+  isButton?: boolean;
 }
 export interface IIamge {
   src: any;
@@ -20,10 +26,11 @@ export default function Card({
   title = '',
   description = '',
   href = '',
+  isButton,
 }: ICardProps) {
   return (
     <Link href={href}>
-      <div className="Card">
+      <div className="Card max-w-80">
         <h3 className="Card-title text-2xl">{title}</h3>
         <Image
           className="Card-image h-80"
@@ -32,7 +39,15 @@ export default function Card({
           width={image.width}
           height={image.height}
         />
-        <p className="Card-text">{description}</p>
+        <p className="Card-text truncate">{description}</p>
+        {isButton && (
+          <Button
+            text="Add To Cart"
+            customClass="mx-auto bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
+          >
+            <FaCartShopping className="text-xl" />
+          </Button>
+        )}
       </div>
     </Link>
   );

@@ -2,12 +2,16 @@ import CustomHeader from '../CustomHeader';
 
 export interface ILayout {
   children: React.ReactNode;
+  isSearchInput?: boolean;
 }
 
-export default async function Layout({ children = <></> }) {
+export default async function Layout({
+  children = <></>,
+  isSearchInput = false,
+}) {
   return (
     <>
-      <CustomHeader title="Your Store" />
+      <CustomHeader isSearchInput={isSearchInput} title="Your Store" />
       {children}
     </>
   );
