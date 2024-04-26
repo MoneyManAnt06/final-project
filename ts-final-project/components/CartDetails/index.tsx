@@ -1,20 +1,23 @@
 import Image from 'next/image';
 import { IImage } from '../Card';
+import Button from '../Button';
 
-interface ICartDetails {
+interface IPropsCartDetails {
   itemName: string;
   price: number;
   quantity: number;
   image: IImage;
+  isButton?: boolean;
 }
 export default function CartDetails({
   itemName,
   price,
   quantity,
   image,
-}: ICartDetails) {
+  isButton,
+}: IPropsCartDetails) {
   return (
-    <div className="Cart-details">
+    <div className="Cart-details flex text-black">
       <div className="Cart-details-image">
         <Image
           src={image.src}
@@ -23,14 +26,20 @@ export default function CartDetails({
           width={image.width}
         />
       </div>
-      <div className="Cart-details-container">
+      <div className="Cart-details-container w-full">
         <h3 className="Cart-details-title">{itemName}</h3>
         <span className="Cart-details-quantity">
           Quantity <span>{quantity}</span>
         </span>
         <span className="Cart-details-price">
-          Total price <span>{price}</span>
+          <span>{`$${price}`}</span>
         </span>
+        {isButton && (
+          <Button
+            text="Remove"
+            customClass="mx-auto bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
+          ></Button>
+        )}
       </div>
     </div>
   );

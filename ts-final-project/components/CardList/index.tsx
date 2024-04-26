@@ -5,7 +5,7 @@ import noImage from '@/images/no-image-found.jpeg';
 interface ICardList {
   list?: IProducts[];
   listCard?: ICardProps[];
-  customclassName?: string;
+  customClass?: string;
   filterCard?: categoryType;
   isButton?: boolean;
 }
@@ -14,7 +14,7 @@ export type categoryType = 1 | 2 | 3;
 
 export default function CardList({
   list,
-  customclassName,
+  customClass,
   filterCard,
   listCard,
   isButton = false,
@@ -55,7 +55,7 @@ export default function CardList({
 
   return (
     <div
-      className={`${customclassName} CardList flex w-9/12 mx-auto justify-evenly`}
+      className={`${customClass} CardList flex w-9/12 mx-auto justify-evenly`}
     >
       {renderCards(cardProps || listCard || [])}
     </div>

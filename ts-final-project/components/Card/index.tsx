@@ -43,7 +43,7 @@ export default function Card({
         {isButton && (
           <Button
             text="Add To Cart"
-            customclassName="mx-auto bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
+            customClass="mx-auto bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
           >
             <FaCartShopping className="text-xl" />
           </Button>
