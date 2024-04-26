@@ -16,7 +16,7 @@ export default function CustomHeader({
 }: ICustomHeaderProps) {
   return (
     <div className="Custom-header justify-between gap-5 mb-24 flex items-center mx-auto w-10/12">
-      <div className="flex gap-x-1.5">
+      <div className="flex gap-x-3.5">
         <FaStore className="Custom-header-icon text-3xl" />
         <h3 className="Custom-header-title text-3xl">{title}</h3>
       </div>

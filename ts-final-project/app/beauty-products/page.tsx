@@ -8,7 +8,7 @@ export default async function Electronics() {
   return (
     <Layout isSearchInput>
       <CardList
-        customClass="flex-wrap gap-8"
+        customclassName="flex-wrap gap-8"
         filterCard={2}
         list={retrieveProducts}
         isButton

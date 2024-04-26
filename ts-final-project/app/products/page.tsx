@@ -1,15 +1,17 @@
 import getAllProducts from '@/actions/products/getAll';
-import { ICardProps } from '@/components/Card';
 import CardList from '@/components/CardList';
 import Layout from '@/components/Layout';
+import { TParams } from '@/customHooks/searchInput';
 
-export default async function ProductPage() {
-  const retrieveProducts = await getAllProducts();
+export default async function ProductPage({ searchParams }: TParams) {
+  const searchString = searchParams.search;
+  const retrieveProducts = await getAllProducts(searchString);
   return (
     <Layout isSearchInput>
       <CardList
-        customClass="flex-wrap gap-8"
+        customclassName="flex-wrap gap-8"
         list={retrieveProducts}
+        isButton
       ></CardList>
     </Layout>
   );

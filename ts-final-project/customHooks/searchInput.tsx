@@ -4,6 +4,12 @@ export type TQueryParam = {
   [key in string]: string;
 };
 
+export type TParams = {
+  searchParams: {
+    [key: string]: string;
+  };
+};
+
 export default function useHandlerUrlParams() {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);

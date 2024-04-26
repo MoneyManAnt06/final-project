@@ -1,17 +1,17 @@
 'use client';
 interface IButtonProps {
-  customClass: string;
+  customclassName: string;
   text: string;
   children: React.ReactNode;
 }
 
 export default function Button({
-  customClass = '',
+  customclassName = '',
   text = '',
   children = <></>,
 }: IButtonProps) {
   return (
-    <button className={customClass}>
+    <button className={customclassName}>
       {text}
       {children}
     </button>
