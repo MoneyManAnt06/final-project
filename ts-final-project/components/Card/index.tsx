@@ -4,6 +4,7 @@ import { categoryType } from '../CardList';
 import Button from '../Button';
 
 import { FaCartShopping } from 'react-icons/fa6';
+import { getUser } from '@/utils/getUser';
 
 export interface ICardProps {
   title: string;
@@ -21,13 +22,14 @@ export interface IImage {
   width: number;
 }
 
-export default function Card({
+export default async function Card({
   image,
   title = '',
   description = '',
   href = '',
   isButton,
 }: ICardProps) {
+  const user = await getUser();
   return (
     <Link href={href}>
       <div className="Card max-w-80 bg-sky-950 py-2.5 px-4">
@@ -40,7 +42,7 @@ export default function Card({
           height={image.height}
         />
         <p className="Card-text truncate">{description}</p>
-        {isButton && (
+        {isButton && user && (
           <Button
             text="Add To Cart"
             customClass="mx-auto bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"

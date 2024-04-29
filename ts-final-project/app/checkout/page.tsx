@@ -1,8 +1,32 @@
+import CartDetails from '@/components/CartDetails';
 import Layout from '@/components/Layout';
 import { TParams } from '@/customHooks/searchInput';
+import { IProductDetail } from '@/types/product_details';
+import { getUser } from '@/utils/getUser';
+import { redirect } from 'next/navigation';
 
 export default async function Checkout({ searchParams }: TParams) {
   const openCartString = searchParams.openCart;
+  const user = await getUser();
+  if (!user) {
+    return redirect('/login');
+  }
+
+  const list: IProductDetail[] = [];
+  const renderCheckoutItems = () => {
+    return list.map((item) => {
+      <li>
+        <CartDetails
+          image={{ alt: '', height: 112, src: '', width: 160 }}
+          price={item.product.price}
+          itemName={item.product.name}
+          quantity={item.quantity}
+        ></CartDetails>
+      </li>;
+
+      return;
+    });
+  };
   return (
     <Layout isCartOpen={!!openCartString}>
       <>
@@ -14,28 +38,8 @@ export default async function Checkout({ searchParams }: TParams) {
                   <h2 className="text-2xl font-bold text-white">
                     Order Summary
                   </h2>
-                  <div className="space-y-6 mt-10">
-                    <div className="grid sm:grid-cols-2 items-start gap-6">
-                      <div className="px-4 py-6 shrink-0 bg-gray-50 rounded-md">
-                        {/* <img src='https://readymadeui.com/images/product10.webp' className="w-full object-contain" /> */}
-                      </div>
-                      <div>
-                        <h3 className="text-base text-white">
-                          Naruto: Split Sneakers
-                        </h3>
-                        <ul className="text-xs text-white space-y-3 mt-4">
-                          <li className="flex flex-wrap gap-4">
-                            Size <span className="ml-auto">37</span>
-                          </li>
-                          <li className="flex flex-wrap gap-4">
-                            Quantity <span className="ml-auto">2</span>
-                          </li>
-                          <li className="flex flex-wrap gap-4">
-                            Total Price <span className="ml-auto">$40</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                  <ul className="space-y-6 mt-10">
+                    <>{renderCheckoutItems()}</>
                     <div className="grid sm:grid-cols-2 items-start gap-6">
                       <div className="px-4 py-6 shrink-0 bg-gray-50 rounded-md">
                         {/* <img src='https://readymadeui.com/images/product11.webp' className="w-full object-contain" /> */}
@@ -95,7 +99,7 @@ export default async function Checkout({ searchParams }: TParams) {
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </ul>
                 </div>
                 <div className="absolute left-0 bottom-0 bg-[#444] w-full p-4">
                   <h4 className="flex flex-wrap gap-4 text-base text-white">

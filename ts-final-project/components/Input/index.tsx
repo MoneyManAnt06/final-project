@@ -3,7 +3,7 @@ import useHandlerUrlParams from '@/customHooks/searchInput';
 import { FormEvent } from 'react';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 
-export default async function Input() {
+export default function Input() {
   const { handlerStateParams } = useHandlerUrlParams();
   const handlerSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

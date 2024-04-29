@@ -1,10 +1,11 @@
 import CartDetails from '../CartDetails';
 import CartButtonClose from './CartButtonClose';
+import noImage from '@/images/no-image-found.jpeg';
 
 export default function Cart() {
   return (
     <div
-      className="relative z-10"
+      className="relative z-10 transition-all"
       aria-labelledby="slide-over-title"
       role="dialog"
       aria-modal="true"
@@ -13,11 +14,11 @@ export default function Cart() {
 
       <div className="fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+          <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 ">
             <div className="pointer-events-auto w-screen max-w-md">
               <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                 <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                  <div className="flex items-start justify-between">
+                  <div className="flex items-start justify-between text-black">
                     <h2
                       className="text-lg font-medium text-gray-900"
                       id="slide-over-title"
@@ -41,7 +42,7 @@ export default function Cart() {
                             alt: 'Cart Image',
                             height: 96,
                             width: 96,
-                            src: '',
+                            src: noImage,
                           }}
                           itemName="Blender"
                           price={1}

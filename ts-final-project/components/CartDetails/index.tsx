@@ -27,19 +27,23 @@ export default function CartDetails({
         />
       </div>
       <div className="Cart-details-container w-full">
-        <h3 className="Cart-details-title">{itemName}</h3>
-        <span className="Cart-details-quantity">
-          Quantity <span>{quantity}</span>
-        </span>
-        <span className="Cart-details-price">
-          <span>{`$${price}`}</span>
-        </span>
-        {isButton && (
-          <Button
-            text="Remove"
-            customClass="mx-auto bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
-          ></Button>
-        )}
+        <div className="flex justify-between">
+          <h3 className="Cart-details-title">{itemName}</h3>
+          <span className="Cart-details-price">
+            <span>{`$${price}`}</span>
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span className="Cart-details-quantity">
+            Quantity <span>{quantity}</span>
+          </span>
+          {isButton && (
+            <Button
+              text="Remove"
+              customClass="m-0 bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
+            ></Button>
+          )}
+        </div>
       </div>
     </div>
   );

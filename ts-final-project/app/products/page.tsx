@@ -7,6 +7,7 @@ export default async function ProductPage({ searchParams }: TParams) {
   const openCartString = searchParams.openCart;
   const searchString = searchParams.search;
   const retrieveProducts = await getAllProducts(searchString);
+
   return (
     <Layout isSearchInput isCartOpen={!!openCartString}>
       <CardList
