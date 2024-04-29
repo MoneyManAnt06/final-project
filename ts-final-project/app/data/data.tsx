@@ -10,7 +10,7 @@ export const data: ICardProps[] = [
     image: {
       alt: 'First Product image',
       height: 300,
-      src: electronics,
+      src: 'https://phrrjghinzbtbfxpdaff.supabase.co/storage/v1/object/public/images/1714425119043product.jpg',
       width: 300,
     },
     description: '',
@@ -22,7 +22,7 @@ export const data: ICardProps[] = [
     image: {
       alt: 'second Product image',
       height: 300,
-      src: beauty,
+      src: 'https://phrrjghinzbtbfxpdaff.supabase.co/storage/v1/object/public/images/1714425366907product.jpg',
       width: 300,
     },
     description: '',
@@ -34,7 +34,7 @@ export const data: ICardProps[] = [
     image: {
       alt: 'third Product image',
       height: 300,
-      src: appliances,
+      src: 'https://phrrjghinzbtbfxpdaff.supabase.co/storage/v1/object/public/images/1714425403572product.jpg',
       width: 300,
     },
     description: '',

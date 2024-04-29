@@ -6,4 +6,5 @@ export interface IProducts {
   price: number;
   available: boolean;
   category_id: number;
+  image: string;
 }

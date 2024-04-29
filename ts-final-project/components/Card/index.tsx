@@ -16,7 +16,7 @@ export interface ICardProps {
   isButton?: boolean;
 }
 export interface IImage {
-  src: any;
+  src: string;
   alt: string;
   height: number;
   width: number;

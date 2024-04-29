@@ -8,7 +8,7 @@ export const GET = async (req: NextRequest) => {
 
   const { data: products, error } = await supabase
     .from('products')
-    .select('*')
+    .select('*, image')
     .order('id', { ascending: true })
     .ilike('name', `%${search}%`)
     .limit(100);

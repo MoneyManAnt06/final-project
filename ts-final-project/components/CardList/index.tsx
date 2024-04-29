@@ -1,7 +1,5 @@
 import Card, { ICardProps } from '../Card';
 import { IProducts } from '@/types/products';
-import noImage from '@/images/no-image-found.jpeg';
-
 interface ICardList {
   list?: IProducts[];
   listCard?: ICardProps[];
@@ -21,12 +19,12 @@ export default function CardList({
 }: ICardList) {
   const cardProps: ICardProps[] | undefined = list?.map((item) => {
     const newProps: ICardProps = {
-      id: item.id || 0,
+      id: item.id!,
       description: item.description,
       title: item.name,
       image: {
         width: 300,
-        src: noImage,
+        src: item.image,
         height: 300,
         alt: 'No Image Found',
       },

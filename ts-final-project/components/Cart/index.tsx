@@ -1,6 +1,5 @@
 import CartDetails from '../CartDetails';
 import CartButtonClose from './CartButtonClose';
-import noImage from '@/images/no-image-found.jpeg';
 
 export default function Cart() {
   return (
@@ -42,7 +41,7 @@ export default function Cart() {
                             alt: 'Cart Image',
                             height: 96,
                             width: 96,
-                            src: noImage,
+                            src: '',
                           }}
                           itemName="Blender"
                           price={1}
