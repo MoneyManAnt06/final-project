@@ -1,3 +1,4 @@
+import { getUser } from '@/utils/getUser';
 import Card, { ICardProps } from '../Card';
 import { IProducts } from '@/types/products';
 interface ICardList {
@@ -10,13 +11,15 @@ interface ICardList {
 
 export type categoryType = 1 | 2 | 3;
 
-export default function CardList({
+export default async function CardList({
   list,
   customClass,
   filterCard,
   listCard,
   isButton = false,
 }: ICardList) {
+  const isUser = await getUser();
+
   const cardProps: ICardProps[] | undefined = list?.map((item) => {
     const newProps: ICardProps = {
       id: item.id!,
@@ -46,6 +49,7 @@ export default function CardList({
             description={card.description}
             image={card.image}
             title={card.title}
+            isUser={isUser}
           />
         );
       });

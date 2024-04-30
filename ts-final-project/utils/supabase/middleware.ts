@@ -67,7 +67,7 @@ export const updateSession = async (request: NextRequest) => {
       data: { user },
     } = await supabase.auth.getUser();
 
-    response.headers.set('user-id', user?.id || '');
+    // response.headers.set('user-id', user?.id || '');
     return response;
   } catch (e) {
     // If you are here, a Supabase client could not be created!

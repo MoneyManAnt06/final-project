@@ -1,10 +1,10 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { categoryType } from '../CardList';
-import Button from '../Button';
-
 import { FaCartShopping } from 'react-icons/fa6';
 import { getUser } from '@/utils/getUser';
+import createCartDetails from '@/actions/cartDetails/create';
 
 export interface ICardProps {
   title: string;
@@ -14,6 +14,7 @@ export interface ICardProps {
   href?: string;
   category?: categoryType;
   isButton?: boolean;
+  isUser?: boolean;
 }
 export interface IImage {
   src: string;
@@ -22,14 +23,19 @@ export interface IImage {
   width: number;
 }
 
-export default async function Card({
+export default function Card({
+  id,
   image,
   title = '',
   description = '',
   href = '',
   isButton,
+  isUser = false,
 }: ICardProps) {
-  const user = await getUser();
+  const handleClick = async () => {
+    await createCartDetails(id);
+  };
+
   return (
     <Link href={href}>
       <div className="Card max-w-80 bg-sky-950 py-2.5 px-4">
@@ -42,13 +48,14 @@ export default async function Card({
           height={image.height}
         />
         <p className="Card-text truncate">{description}</p>
-        {isButton && user && (
-          <Button
-            text="Add To Cart"
-            customClass="mx-auto bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
+        {isButton && isUser && (
+          <button
+            onClick={handleClick}
+            className="mx-auto bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
           >
+            Add To Cart
             <FaCartShopping className="text-xl" />
-          </Button>
+          </button>
         )}
       </div>
     </Link>

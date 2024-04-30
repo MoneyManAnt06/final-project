@@ -1,21 +1,20 @@
 import axios from 'axios';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/server';
 
 export type axiosRest<T> = { status: number; body: { data: T } };
 
-export const instanceAxios = axios.create();
+export const instanceAxios = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_URL_BASE,
+});
 
-axios.interceptors.request.use(
-  async function (config) {
+instanceAxios.interceptors.request.use(
+  async (config) => {
     const supabase = createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    config.headers.set('user-id', user?.id);
+    config.headers['user-id'] = user?.id || '';
     return config;
   },
-  function (error) {
-    // Do something with request error
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );

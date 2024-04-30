@@ -1,13 +1,11 @@
-import axios from 'axios';
+'use server';
+import { instanceAxios } from '@/utils/axiosconfig';
 
-export default async function createCartDetails() {
+export default async function createCartDetails(product_id: number) {
   try {
     const {
       data: { body },
-    } = await axios.post(
-      `${process.env.NEXT_PUBLIC_URL_BASE}/cart_details`,
-      {}
-    );
+    } = await instanceAxios.post(`/cart_details`, { product_id, quantity: 1 });
     return body.data;
   } catch (error) {}
   return [];

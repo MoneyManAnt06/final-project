@@ -6,7 +6,6 @@ import createCartDetails from '@/actions/cartDetails/create';
 
 export default async function Index({ searchParams }: TParams) {
   const openCartString = searchParams.openCart;
-  await createCartDetails();
   return (
     <>
       <Layout isCartOpen={!!openCartString}>

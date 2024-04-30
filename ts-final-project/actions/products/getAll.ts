@@ -7,9 +7,7 @@ export default async function getAllProducts(
   try {
     const {
       data: { body },
-    } = await instanceAxios.get(
-      `${process.env.NEXT_PUBLIC_URL_BASE}/products?search=${searchParam || ''}`
-    );
+    } = await instanceAxios.get(`/products?search=${searchParam || ''}`);
     return body.data;
   } catch (error) {}
   return [];
