@@ -4,7 +4,10 @@ export default async function createCartDetails() {
   try {
     const {
       data: { body },
-    } = await axios.post(`http://localhost:3000/api/cart_details`, {});
+    } = await axios.post(
+      `${process.env.NEXT_PUBLIC_URL_BASE}/cart_details`,
+      {}
+    );
     return body.data;
   } catch (error) {}
   return [];

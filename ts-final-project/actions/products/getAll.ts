@@ -1,6 +1,5 @@
 import { IProducts } from '@/types/products';
-import { axiosRest, instanceAxios } from '@/utils/axiosconfig';
-import axios from 'axios';
+import { instanceAxios } from '@/utils/axiosconfig';
 
 export default async function getAllProducts(
   searchParam?: string | undefined
@@ -8,8 +7,8 @@ export default async function getAllProducts(
   try {
     const {
       data: { body },
-    } = await axios.get(
-      `http://localhost:3000/api/products?search=${searchParam || ''}`
+    } = await instanceAxios.get(
+      `${process.env.NEXT_PUBLIC_URL_BASE}/products?search=${searchParam || ''}`
     );
     return body.data;
   } catch (error) {}
