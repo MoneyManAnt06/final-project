@@ -1,5 +1,5 @@
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import { type NextRequest, NextResponse } from "next/server";
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const updateSession = async (request: NextRequest) => {
   // This `try/catch` block is only here for the interactive tutorial.
@@ -42,7 +42,7 @@ export const updateSession = async (request: NextRequest) => {
             // If the cookie is removed, update the cookies for the request and response
             request.cookies.set({
               name,
-              value: "",
+              value: '',
               ...options,
             });
             response = NextResponse.next({
@@ -52,18 +52,22 @@ export const updateSession = async (request: NextRequest) => {
             });
             response.cookies.set({
               name,
-              value: "",
+              value: '',
               ...options,
             });
           },
         },
-      },
+      }
     );
 
     // This will refresh session if expired - required for Server Components
     // https://supabase.com/docs/guides/auth/server-side/nextjs
-    await supabase.auth.getUser();
 
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    response.headers.set('user-id', user?.id || '');
     return response;
   } catch (e) {
     // If you are here, a Supabase client could not be created!

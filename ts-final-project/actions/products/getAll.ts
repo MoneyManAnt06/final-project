@@ -11,7 +11,6 @@ export default async function getAllProducts(
     } = await axios.get(
       `http://localhost:3000/api/products?search=${searchParam || ''}`
     );
-    console.log(body.data);
     return body.data;
   } catch (error) {}
   return [];
