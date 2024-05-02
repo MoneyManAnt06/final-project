@@ -17,9 +17,10 @@ export default async function Checkout({ searchParams }: TParams) {
     return list.map((item) => {
       <li>
         <CartDetails
+          id={item.id}
           image={{ alt: '', height: 112, src: '', width: 160 }}
-          price={item.product.price}
-          itemName={item.product.name}
+          price={item.products.price}
+          itemName={item.products.name}
           quantity={item.quantity}
         ></CartDetails>
       </li>;
