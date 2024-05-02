@@ -1,5 +1,7 @@
+import getAllCartDetails from '@/actions/cartDetails/getAll';
 import Cart from '../Cart';
 import CustomHeader from '../CustomHeader';
+import { IProductDetail } from '@/types/product_details';
 export interface ILayout {
   children: React.ReactNode;
   isSearchInput?: boolean;
@@ -11,11 +13,12 @@ export default async function Layout({
   isSearchInput = false,
   isCartOpen = false,
 }) {
+  const cartData: IProductDetail[] = await getAllCartDetails();
   return (
     <>
       <CustomHeader isSearchInput={isSearchInput} title="Your Store" />
       {children}
-      {isCartOpen && <Cart />}
+      {isCartOpen && <Cart cartData={cartData} />}
     </>
   );
 }

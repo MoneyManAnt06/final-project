@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 export const GET = async (req: NextRequest) => {
   const supabase = createClient();
   const search: string = req.nextUrl.searchParams.get('search') || '';
-  console.log(search);
 
   const { data: products, error } = await supabase
     .from('products')

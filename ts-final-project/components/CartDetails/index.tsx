@@ -1,6 +1,7 @@
+'use client';
 import Image from 'next/image';
 import { IImage } from '../Card';
-import Button from '../Button';
+import deleteCartDetails from '@/actions/cartDetails/delete';
 
 interface IPropsCartDetails {
   itemName: string;
@@ -8,6 +9,7 @@ interface IPropsCartDetails {
   quantity: number;
   image: IImage;
   isButton?: boolean;
+  id: number;
 }
 export default function CartDetails({
   itemName,
@@ -15,7 +17,11 @@ export default function CartDetails({
   quantity,
   image,
   isButton,
+  id,
 }: IPropsCartDetails) {
+  const handleClick = async () => {
+    await deleteCartDetails(id);
+  };
   return (
     <div className="Cart-details flex text-black">
       <div className="Cart-details-image">
@@ -38,10 +44,13 @@ export default function CartDetails({
             Quantity <span>{quantity}</span>
           </span>
           {isButton && (
-            <Button
-              text="Remove"
-              customClass="m-0 bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
-            ></Button>
+            <button
+              type="button"
+              onClick={handleClick}
+              className="m-0 bg-slate-400 flex items-center text-slate-950 border-4 border-blue-500 rounded p-1 gap-1.5 hover:bg-white"
+            >
+              Remove
+            </button>
           )}
         </div>
       </div>

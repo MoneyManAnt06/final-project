@@ -6,7 +6,7 @@ export const GET = async () => {
 
   let { data: cart_details, error } = await supabase
     .from('cart_details')
-    .select('*');
+    .select('products(id, name, image, price), cart_id, quantity, id');
 
   return NextResponse.json({ status: 200, body: { data: cart_details } });
 };
@@ -17,7 +17,6 @@ export const POST = async (request: NextRequest) => {
   const user_id = (await request.headers.get('user-id')) || '';
 
   const cart_id = await getCreateCart(user_id);
-  console.log('*** cart id ***', cart_id);
   if (!cart_id) {
     return NextResponse.json({
       status: 500,

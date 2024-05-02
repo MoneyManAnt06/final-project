@@ -4,6 +4,7 @@ import Input from '../Input';
 import { FaStore } from 'react-icons/fa6';
 import CartButton from '../Cart/CartButton';
 import { getUser } from '@/utils/getUser';
+import getAllCartDetails from '@/actions/cartDetails/getAll';
 
 interface ICustomHeaderProps {
   title: string;
