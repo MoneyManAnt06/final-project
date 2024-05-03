@@ -26,7 +26,9 @@ export default async function CustomHeader({
       <div className="Custom-header-tabs flex gap-5">
         <Link href="/">Home</Link>
         <Link href="/products">Products</Link>
-        <Link href="checkout">CheckOut</Link>
+        <Link href="/checkout">CheckOut</Link>
+        <Link href="/orders">Orders</Link>
+        <Link href="/relatedProducts">Related Products</Link>
       </div>
       {isSearchInput && <Input />}
       <div className="flex-1 w-full flex flex-col gap-20 items-center max-w-48">
