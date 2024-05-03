@@ -10,6 +10,7 @@ interface IPropsCartDetails {
   image: IImage;
   isButton?: boolean;
   id: number;
+  customClass?: string;
 }
 export default function CartDetails({
   itemName,
@@ -18,6 +19,7 @@ export default function CartDetails({
   image,
   isButton,
   id,
+  customClass,
 }: IPropsCartDetails) {
   const handleClick = async () => {
     await deleteCartDetails(id);
@@ -32,7 +34,7 @@ export default function CartDetails({
           width={image.width}
         />
       </div>
-      <div className="Cart-details-container w-full">
+      <div className={`${customClass} Cart-details-container w-full`}>
         <div className="flex justify-between">
           <h3 className="Cart-details-title">{itemName}</h3>
           <span className="Cart-details-price">
