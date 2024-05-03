@@ -6,5 +6,9 @@ export interface IOrders {
   total: number;
   shipping_address: string;
   payment_method: number;
-  order_status: string;
+  order_status: orderStatusType;
 }
+
+export type orderStatusType = 'pending' | 'processed' | 'shipped' | 'delivered';
+
+export type paymentMethodType = 'cash' | 'card' | 'o las nalgas';

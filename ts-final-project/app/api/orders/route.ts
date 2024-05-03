@@ -19,6 +19,8 @@ export const POST = async (request: NextRequest) => {
     .insert([{ ...orderDetailsData, user_id, cart_id }])
     .select();
 
+  await deleteCartDetails(cart_id);
+
   return NextResponse.json({
     status: 200,
     body: { data: orders },
@@ -39,4 +41,13 @@ const getCart = async (user_id: string): Promise<number> => {
     .single();
 
   return shopping_carts.id;
+};
+
+export const deleteCartDetails = async (cart_id: number): Promise<void> => {
+  const supabase = createClient();
+
+  const { error } = await supabase
+    .from('cart_details')
+    .delete()
+    .eq('cart_id', cart_id);
 };

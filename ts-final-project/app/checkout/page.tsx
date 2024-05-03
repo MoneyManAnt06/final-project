@@ -59,7 +59,10 @@ export default async function Checkout({ searchParams }: TParams) {
               <h2 className="text-2xl font-bold text-[#333]">
                 Complete your order
               </h2>
-              <CheckoutForm />
+              <CheckoutForm
+                isDisabledButton={list.length === 0}
+                total={calcCheckout}
+              />
             </div>
           </div>
         </div>
