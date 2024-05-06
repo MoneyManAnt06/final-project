@@ -3,4 +3,5 @@ export interface ICategories {
   created_at?: Date;
   description: string;
   image: string;
+  href: string;
 }
