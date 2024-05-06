@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { categoryType } from '../CardList';
 import { FaCartShopping } from 'react-icons/fa6';
-import { getUser } from '@/utils/getUser';
 import createCartDetails from '@/actions/cartDetails/create';
+import { toast } from 'react-toastify';
 
 export interface ICardProps {
   title: string;
@@ -34,6 +34,7 @@ export default function Card({
 }: ICardProps) {
   const handleClick = async () => {
     await createCartDetails(id);
+    toast.success('Your item has been added to the cart');
   };
 
   return (

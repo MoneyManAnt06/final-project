@@ -15,7 +15,7 @@ export default async function Orders({ searchParams }: TParams) {
 
   const retrieveOrders = await getAllOrders();
   return (
-    <Layout isSearchInput isCartOpen={!!openCartString}>
+    <Layout isCartOpen={!!openCartString}>
       <Table list={retrieveOrders} />
     </Layout>
   );
