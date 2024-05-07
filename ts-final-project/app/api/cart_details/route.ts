@@ -24,6 +24,24 @@ export const POST = async (request: NextRequest) => {
     });
   }
 
+  const { data: existedProduct } = await supabase
+    .from('cart_details')
+    .select('*')
+    .eq('product_id', cartDetailsData.product_id)
+    .single();
+
+  if (existedProduct) {
+    const { error } = await supabase
+      .from('cart_details')
+      .update({ quantity: existedProduct.quantity + 1 })
+      .eq('product_id', cartDetailsData.product_id);
+
+    return NextResponse.json({
+      status: 200,
+      body: { data: existedProduct },
+    });
+  }
+
   const { data: cart_details, error } = await supabase
     .from('cart_details')
     .insert([{ ...cartDetailsData, cart_id }])

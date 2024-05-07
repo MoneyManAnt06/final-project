@@ -5,10 +5,11 @@ interface ICalculations {
   calcTotal: number;
   calcTaxes: number;
 }
+
 export const Calculations = (cartData: IProductDetail[]): ICalculations => {
   const calcSubTotal = cartData.reduce(
     (acc, currentValue) => {
-      acc.subTotal += currentValue.products.price;
+      acc.subTotal += currentValue.products.price * currentValue.quantity;
 
       return acc;
     },

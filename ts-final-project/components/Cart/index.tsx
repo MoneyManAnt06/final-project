@@ -22,12 +22,19 @@ export default function Cart({ cartData }: ICartProps) {
           src: item.products.image,
         }}
         itemName={item.products.name}
-        price={item.products.price}
+        price={calcQuantity(item.products.price, item.quantity)}
         quantity={item.quantity}
       />
     ));
   };
   const calcs = Calculations(cartData);
+
+  const calcQuantity = (price: number, quantity: number): number => {
+    const calcJoinedQuantity = price * quantity;
+
+    return calcJoinedQuantity;
+  };
+
   return (
     <div
       className="relative z-10 transition-all"
